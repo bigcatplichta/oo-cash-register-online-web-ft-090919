@@ -9,6 +9,7 @@ class CashRegister
   end 
   
   def add_item(item, price, quantity = 1)
+    @previous_total = @total 
     quantity.times { @items << item  }
     @total += (price*quantity) 
   end 
@@ -22,5 +23,8 @@ class CashRegister
     end 
   end 
   
+  def void_last_transaction
+    @total = @previous_total
+  end 
   
 end 
